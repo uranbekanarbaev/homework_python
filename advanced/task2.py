@@ -1,8 +1,18 @@
 
-def words_index_map(strings: list) -> dict:
+
+def words_index_map(strings: list = None) -> dict:
+    """
+        The function calculates the words index map and gives the dictionary of words
+
+        Args:
+            list: an array with words
+        
+        Returns:
+            dict: the number of words frequency
+    """
     result = {}
-    for i, sentences in enumerate(strings):
-        for word in sentences.split():
+    for i, sentence in enumerate(strings):
+        for word in sentence.split():
             if word not in result:
                 result[word] = {i}
             else:
@@ -10,10 +20,13 @@ def words_index_map(strings: list) -> dict:
 
     return result
 
+
 # Тест
 strings = [
     "hello world",
     "world of python",
     "hello again"
 ]
-print(words_index_map(strings))
+
+if __name__ == '__main__':
+    print(words_index_map(strings))

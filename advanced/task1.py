@@ -1,5 +1,14 @@
 
-def is_symmetric(matrix: list) -> bool:
+def is_symmetric(matrix: list = None) -> bool:
+    """
+        The function checks whether the matrix is symmetrical or not
+
+        Args:
+            list: matrix
+        
+        Returns:
+            bool: whether matrix is symmetrical or not
+    """
     n = len(matrix)
     for i in range(n):
         if len(matrix[i]) != n:
@@ -18,4 +27,6 @@ matrix = [
     [2, 4, 5],
     [3, 5, 6]
 ]
-print(is_symmetric(matrix))
+
+if __name__ == '__main__':
+    print(is_symmetric(matrix))
