@@ -1,16 +1,22 @@
+"""
+Задача 2: Максимальная сумма подмассива
+Напишите функцию, которая принимает список чисел и возвращает максимальную сумму подмассива.
+"""
 
 
-def max_subarray_sum(nums: list) -> int:
+def max_subarray_sum(nums: list = None) -> int:
     """
         Calculates the subarray within an array that gives max sum
 
         Args:
-            nums: int. The array of numbers
+            nums: list. The array of numbers
         
         Returns:
             int: The subarray with maximum sum
     """
     max_sum = current_sum = nums[0]
+    if not nums:
+        return []
     for num in nums[1:]:
         current_sum = max(num, current_sum + num)
         max_sum = max(max_sum, current_sum)

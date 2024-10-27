@@ -1,4 +1,7 @@
-
+"""
+Задача 3: Работа с файлами
+Напишите программу, которая читает текстовый файл, удаляет из него все пустые строки и строки, состоящие только из пробелов, а затем записывает результат в новый файл.
+"""
 
 def clean_file(input_file: str = None, output_file: str = None) -> None:
     """
@@ -16,10 +19,9 @@ def clean_file(input_file: str = None, output_file: str = None) -> None:
 
     cleaned_file = [line for line in lines if line.strip()]
     
-    print(cleaned_file)
-
     with open(output_file, 'w') as file:
         file.writelines(cleaned_file)
+        
 
 
 input_file = "input.txt"

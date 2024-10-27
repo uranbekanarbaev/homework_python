@@ -1,3 +1,8 @@
+"""
+Задача 1: Проверка матрицы на симметричность
+Напишите функцию, которая принимает на вход квадратную матрицу и проверяет, является ли она симметричной относительно главной диагонали.
+"""
+
 
 def is_symmetric(matrix: list = None) -> bool:
     """
@@ -9,15 +14,20 @@ def is_symmetric(matrix: list = None) -> bool:
         Returns:
             bool: whether matrix is symmetrical or not
     """
+
+    if not matrix or not matrix[0]:
+        return False
+
     n = len(matrix)
-    for i in range(n):
-        if len(matrix[i]) != n:
+    
+    for row in matrix:
+        if len(row) != n:
             return False
         
     for i in range(n):
-        for j in range(i + 1, n):  # Сравниваем только верхнюю треугольную часть
+        for j in range(i + 1, n):
             if matrix[i][j] != matrix[j][i]:
-                return False  # Если найдена пара неравных элементов, матрица несимметрична
+                return False
     return True
 
 

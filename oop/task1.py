@@ -1,4 +1,15 @@
+"""
+Задача 1: Создание библиотеки
+Создайте библиотеку для управления коллекцией книг. Каждая книга должна быть представлена как объект, содержащий атрибуты: название, автор, год издания, жанр и количество страниц. Библиотека должна поддерживать следующие операции:
 
+1. Добавление книги.
+2. Удаление книги.
+3. Поиск книги по названию.
+4. Вывод всех книг одного автора.
+5. Вывод всех книг, отсортированных по году издания.
+
+Используйте свойства для проверки корректности ввода данных (например, год издания должен быть положительным числом).
+"""
 
 class Book:
     """
@@ -13,16 +24,6 @@ class Book:
     """
 
     def __init__(self, name, author, year, genre, pages):
-        """
-            Initializes the book with following parameters:
-
-            Attributes:
-            name (str): the title of the book
-            author (str): the author of the book
-            year (int): the year of publication
-            genre (str): the genre of the book 
-            pages (int): The bumner of pages within a book. 
-        """
         self.name = name
         self.author = author
         self.year = year
@@ -30,7 +31,7 @@ class Book:
         self.pages = pages
 
     def __str__(self):
-        print(f'book has following info: name:{self.name}, author:{self.author}, year:{self.year}, genre:{self.genre}, pages:{self.pages}')
+        return f'book has following info: name:{self.name}, author:{self.author}, year:{self.year}, genre:{self.genre}, pages:{self.pages}'
 
 
 class Library:
@@ -66,7 +67,7 @@ class Library:
             if book.name == title:
                 return book
             else:
-                raise Exception("Book was not found")
+                return None
             
     def delete_book(self, book: Book = None):
         """
@@ -82,7 +83,7 @@ class Library:
             self.books.remove(book)
             return "Book successfully deleted"
         else:
-            raise Exception("Book was not found")
+            raise ValueError
 
 
     def get_books_by_author(self, author: str = None):

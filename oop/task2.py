@@ -1,21 +1,31 @@
+"""
+Задача 2: Создание банковской системы
+Создайте систему для управления банковскими счетами. У каждого счета должны быть атрибуты: номер счета, имя владельца, баланс. Система должна поддерживать следующие операции:
 
+1. Депозит средств.
+2. Снятие средств.
+3. Проверка баланса.
+4. Перевод средств с одного счета на другой.
+
+Используйте магические методы для вывода информации о счете и для проверки равенства счетов (например, по номеру счета).
+"""
 
 class BankAccount:
     """
     A class to represent a bank account.
 
     Attributes:
-        account_num (str): The account number of the bank account.
+        account_num (int): The account number of the bank account.
         name (str): The name of the account holder.
         balance (float): The current balance of the account.
     """
 
-    def __init__(self, account_num: int = None, name: str = None, balance: int = 0):
+    def __init__(self, account_num: int = None, name: str = None, balance: float = 0):
         """
         Initializes a new BankAccount instance.
 
         Args:
-            account_num (str): The account number.
+            account_num (int): The account number.
             name (str): The name of the account holder.
             balance (float): The initial balance of the account.
         """
@@ -23,7 +33,7 @@ class BankAccount:
         self.name = name
         self.balance = balance
     
-    def deposit(self, amount: int = 0):
+    def deposit(self, amount: float = 0):
         """
         Deposits a specified amount into the bank account.
 
@@ -32,7 +42,7 @@ class BankAccount:
         """
         self.balance += amount
 
-    def withdraw(self, amount: int = 0):
+    def withdraw(self, amount: float = 0):
         """
         Withdraws a specified amount from the bank account.
 
@@ -42,7 +52,7 @@ class BankAccount:
         if self.check_balance() >= amount:
             self.balance -= amount
         else:
-            raise Exception("The bank account balance is insufficient")
+            raise ValueError
 
     def check_balance(self):
         """
@@ -77,7 +87,7 @@ class BankSystem:
         """
         self.bank_accounts.append(bank_account)
 
-    def transfer(self, sender_number: int = None, receiver_number: int = None, amount: int = 0):
+    def transfer(self, sender_number: int = None, receiver_number: int = None, amount: float = 0):
         """
         Transfers a specified amount from one account to another.
 
@@ -114,8 +124,8 @@ class BankSystem:
 # Пример использования
 
 if __name__ == '__main__':
-    account1 = BankAccount("12345", "Иван Иванов", 1000)
-    account2 = BankAccount("67890", "Петр Петров", 2000)
+    account1 = BankAccount("12345", "Ivan Ivanov", 1000)
+    account2 = BankAccount("67890", "Petr Petrov", 2000)
     bank = BankSystem()
     bank.add_account(account1)
     bank.add_account(account2)

@@ -1,3 +1,10 @@
+"""
+Задача 4: Разработка контекстного менеджера для работы с файлами
+Создайте контекстный менеджер для работы с файлами, который будет автоматически открывать и закрывать файл, а также обрабатывать возможные исключения. Используйте магические методы __enter__ и __exit__.
+"""
+
+import logging
+
 class FileManager:
     """
     A context manager class for handling file operations.
@@ -25,6 +32,7 @@ class FileManager:
         """
         self.filename = filename
         self.mode = mode
+        self.file = None
 
     def __enter__(self):
         """
@@ -51,8 +59,8 @@ class FileManager:
         if self.file:
             self.file.close()
         if exc_type:
-            print(f"Произошла ошибка: {exc_value}")
-            return True  # Suppress the exception
+            logging.error(f"Error being faced: {exc_value}")
+            return True 
 
 # Пример использования
 if __name__ == '__main__':
